@@ -1,185 +1,93 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-
-:root{
---primary:330 100% 60%;
---bg:0 0% 5%;
---card:0 0% 8%;
---text:0 0% 95%;
-}
-
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
 body{
-font-family:'Inter',sans-serif;
-background:hsl(var(--bg));
-color:hsl(var(--text));
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
+    font-family:'Inter',sans-serif;
+    background:transparent;
+    margin:0;
+    padding:0;
+    color:#FFFFFF;
 }
 
-/* фоновое неоновое свечение */
-
-body::before{
-content:"";
-position:absolute;
-width:800px;
-height:800px;
-background:radial-gradient(circle,hsl(var(--primary)/0.35),transparent 60%);
-filter:blur(120px);
-top:-200px;
-left:-200px;
-}
-
-body::after{
-content:"";
-position:absolute;
-width:800px;
-height:800px;
-background:radial-gradient(circle,hsl(var(--primary)/0.25),transparent 60%);
-filter:blur(140px);
-bottom:-200px;
-right:-200px;
-}
-
-/* контейнер */
-
+/* контейнер формы */
 .form-wrapper{
-position:relative;
-width:100%;
-max-width:620px;
-padding:60px;
-border-radius:28px;
-
-background:rgba(20,20,20,0.6);
-backdrop-filter:blur(30px);
-
-border:1px solid rgba(255,255,255,0.06);
-
-box-shadow:
-0 0 60px hsl(var(--primary)/0.15),
-0 20px 80px rgba(0,0,0,0.6);
-
+    width:100%;
+    max-width:520px;
+    margin:auto;
+    background:transparent;
+    box-shadow:none;
+    border:none;
 }
 
 /* заголовок */
-
 .title{
-font-size:34px;
-font-weight:800;
-text-align:center;
-margin-bottom:40px;
-
-text-shadow:
-0 0 10px hsl(var(--primary)/0.5),
-0 0 40px hsl(var(--primary)/0.25);
+    font-size:32px;
+    font-weight:800;
+    text-align:center;
+    margin-bottom:30px;
+    color:#FFFFFF;
+    text-shadow:0 0 10px rgba(255,51,153,0.5),0 0 30px rgba(255,51,153,0.2);
 }
 
 /* язык */
-
 .lang{
-width:100%;
-margin-bottom:22px;
-
-padding:16px 18px;
-border-radius:16px;
-
-background:#111;
-border:1px solid rgba(255,255,255,0.08);
-
-color:white;
-font-size:15px;
+    width:100%;
+    padding:16px;
+    margin-bottom:18px;
+    border-radius:14px;
+    background:#111111;
+    border:1px solid rgba(255,255,255,0.08);
+    color:#FFFFFF;
+    font-size:15px;
 }
 
 /* поля */
-
 .input{
-width:100%;
-padding:18px 20px;
-margin-bottom:20px;
-
-border-radius:18px;
-border:1px solid rgba(255,255,255,0.08);
-
-background:#111;
-
-color:white;
-font-size:16px;
-
-transition:all .25s ease;
+    width:100%;
+    padding:18px 20px;
+    margin-bottom:18px;
+    border-radius:16px;
+    background:#111111;
+    border:1px solid rgba(255,255,255,0.08);
+    color:#FFFFFF;
+    font-size:16px;
+    transition:all .25s ease;
 }
-
 .input::placeholder{
-color:#777;
+    color:#888;
 }
-
 .input:focus{
-outline:none;
-
-border-color:hsl(var(--primary));
-
-box-shadow:
-0 0 0 2px hsl(var(--primary)/0.2),
-0 0 30px hsl(var(--primary)/0.35);
+    outline:none;
+    border-color:#FF3399;
+    box-shadow:0 0 0 2px rgba(255,51,153,0.25),0 0 25px rgba(255,51,153,0.35);
 }
 
 /* кнопка */
-
 .back-btn{
-
-margin-top:10px;
-
-width:100%;
-padding:18px;
-
-border-radius:18px;
-
-border:none;
-
-font-weight:700;
-font-size:16px;
-
-color:white;
-
-background:linear-gradient(
-135deg,
-hsl(var(--primary)),
-hsl(330 100% 70%)
-);
-
-cursor:pointer;
-
-box-shadow:
-0 0 25px hsl(var(--primary)/0.45),
-0 10px 40px rgba(0,0,0,0.5);
-
-transition:all .25s ease;
+    width:100%;
+    padding:18px;
+    margin-top:10px;
+    border-radius:16px;
+    border:none;
+    font-weight:700;
+    font-size:16px;
+    color:#FFFFFF;
+    background:linear-gradient(135deg,#FF3399,#FF66B3);
+    box-shadow:0 0 20px rgba(255,51,153,0.5);
+    cursor:pointer;
+    transition:all .25s ease;
 }
-
 .back-btn:hover{
-
-transform:translateY(-2px);
-
-box-shadow:
-0 0 40px hsl(var(--primary)/0.7),
-0 20px 60px rgba(0,0,0,0.6);
-
+    transform:translateY(-2px);
+    box-shadow:0 0 40px rgba(255,51,153,0.8);
+    background:linear-gradient(135deg,#FF3DA1,#FF80C1);
 }
-
 </style>
 </head>
 
@@ -188,84 +96,54 @@ box-shadow:
 <div class="form-wrapper">
 
 <div class="title" id="title">
-Свяжитесь с нами
+Contact us
 </div>
 
 <select class="lang" id="lang">
-<option value="ru">Русский</option>
-<option value="pl">Polski</option>
-<option value="en">English</option>
-<option value="ua">Українська</option>
+  <option value="en" selected>English</option>
+  <option value="ru">Русский</option>
+  <option value="pl">Polski</option>
+  <option value="ua">Українська</option>
 </select>
 
-<input class="input" id="name" placeholder="Имя">
-
-<input class="input" id="surname" placeholder="Фамилия">
-
-<input class="input" id="contact" placeholder="Телефон / Email / Telegram">
+<input class="input" id="name" placeholder="First name">
+<input class="input" id="surname" placeholder="Last name">
+<input class="input" id="contact" placeholder="Phone / Email / Telegram">
 
 <button class="back-btn" id="back">
-Вернуться на сайт
+Back to site
 </button>
 
 </div>
 
 <script>
-
-const text = {
-
-ru:{
-title:"Свяжитесь с нами",
-name:"Имя",
-surname:"Фамилия",
-contact:"Телефон / Email / Telegram",
-back:"Вернуться на сайт"
-},
-
-pl:{
-title:"Skontaktuj się z nami",
-name:"Imię",
-surname:"Nazwisko",
-contact:"Telefon / Email / Telegram",
-back:"Powrót na stronę"
-},
-
-en:{
-title:"Contact us",
-name:"First name",
-surname:"Last name",
-contact:"Phone / Email / Telegram",
-back:"Back to site"
-},
-
-ua:{
-title:"Зв'яжіться з нами",
-name:"Ім'я",
-surname:"Прізвище",
-contact:"Телефон / Email / Telegram",
-back:"Повернутися на сайт"
+const text={
+en:{title:"Contact us",name:"First name",surname:"Last name",contact:"Phone / Email / Telegram",back:"Back to site"},
+ru:{title:"Свяжитесь с нами",name:"Имя",surname:"Фамилия",contact:"Телефон / Email / Telegram",back:"Вернуться на сайт"},
+pl:{title:"Skontaktuj się z nami",name:"Imię",surname:"Nazwisko",contact:"Telefon / Email / Telegram",back:"Powrót na stronę"},
+ua:{title:"Зв'яжіться з нами",name:"Ім'я",surname:"Прізвище",contact:"Телефон / Email / Telegram",back:"Повернутися на сайт"}
 }
 
-}
+// Устанавливаем английский по умолчанию
+document.getElementById("title").innerText = text.en.title;
+document.getElementById("name").placeholder = text.en.name;
+document.getElementById("surname").placeholder = text.en.surname;
+document.getElementById("contact").placeholder = text.en.contact;
+document.getElementById("back").innerText = text.en.back;
 
 const lang=document.getElementById("lang")
-
 lang.addEventListener("change",()=>{
-
-const l=text[lang.value]
-
-document.getElementById("title").innerText=l.title
-document.getElementById("name").placeholder=l.name
-document.getElementById("surname").placeholder=l.surname
-document.getElementById("contact").placeholder=l.contact
-document.getElementById("back").innerText=l.back
-
+    const l=text[lang.value]
+    document.getElementById("title").innerText=l.title
+    document.getElementById("name").placeholder=l.name
+    document.getElementById("surname").placeholder=l.surname
+    document.getElementById("contact").placeholder=l.contact
+    document.getElementById("back").innerText=l.back
 })
 
 document.getElementById("back").onclick=()=>{
-window.location.href="https://iv-store-one.vercel.app"
+    window.location.href="https://iv-store-one.vercel.app"
 }
-
 </script>
 
 </body>
