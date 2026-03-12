@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
-body{
+body {
     font-family:'Inter',sans-serif;
     background:transparent;
     margin:0;
@@ -16,17 +16,22 @@ body{
 }
 
 /* контейнер формы */
-.form-wrapper{
+.form-wrapper {
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
     width:100%;
     max-width:520px;
     margin:auto;
     background:transparent;
     box-shadow:none;
     border:none;
+    padding:20px;
 }
 
 /* заголовок */
-.title{
+.title {
     font-size:32px;
     font-weight:800;
     text-align:center;
@@ -36,7 +41,7 @@ body{
 }
 
 /* язык */
-.lang{
+.lang {
     width:100%;
     padding:16px;
     margin-bottom:18px;
@@ -48,7 +53,7 @@ body{
 }
 
 /* поля */
-.input{
+.input {
     width:100%;
     padding:18px 20px;
     margin-bottom:18px;
@@ -59,17 +64,17 @@ body{
     font-size:16px;
     transition:all .25s ease;
 }
-.input::placeholder{
+.input::placeholder {
     color:#888;
 }
-.input:focus{
+.input:focus {
     outline:none;
     border-color:#FF3399;
     box-shadow:0 0 0 2px rgba(255,51,153,0.25),0 0 25px rgba(255,51,153,0.35);
 }
 
 /* кнопка */
-.back-btn{
+.back-btn {
     width:100%;
     padding:18px;
     margin-top:10px;
@@ -83,7 +88,7 @@ body{
     cursor:pointer;
     transition:all .25s ease;
 }
-.back-btn:hover{
+.back-btn:hover {
     transform:translateY(-2px);
     box-shadow:0 0 40px rgba(255,51,153,0.8);
     background:linear-gradient(135deg,#FF3DA1,#FF80C1);
@@ -124,7 +129,7 @@ pl:{title:"Skontaktuj się z nami",name:"Imię",surname:"Nazwisko",contact:"Tele
 ua:{title:"Зв'яжіться з нами",name:"Ім'я",surname:"Прізвище",contact:"Телефон / Email / Telegram",back:"Повернутися на сайт"}
 }
 
-// Устанавливаем английский по умолчанию
+// Английский по умолчанию
 document.getElementById("title").innerText = text.en.title;
 document.getElementById("name").placeholder = text.en.name;
 document.getElementById("surname").placeholder = text.en.surname;
@@ -141,8 +146,9 @@ lang.addEventListener("change",()=>{
     document.getElementById("back").innerText=l.back
 })
 
-document.getElementById("back").onclick=()=>{
-    window.location.href="https://iv-store-one.vercel.app"
+// кнопка открывает сайт полностью, а не внутри iframe
+document.getElementById("back").onclick = () => {
+    window.top.location.href = "https://iv-store-one.vercel.app";
 }
 </script>
 
