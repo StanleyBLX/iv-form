@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IV Form</title>
+<style>
+body { background: #0b0b0b; font-family: 'Inter', sans-serif; color:#fff; display:flex; justify-content:center; align-items:center; height:100vh; }
+#iv-form-container { background:#0b0b0b; padding:30px; border-radius:12px; max-width:400px; width:100%; }
+#language-switcher { margin-bottom:20px; }
+select#lang-select { width:100%; padding:8px; border-radius:6px; border:1px solid #FF6EC7; background:#1a1a1a; color:#fff; font-weight:bold; }
+.form-group { margin-bottom:15px; }
+label { display:block; margin-bottom:6px; font-size:14px; }
+input { width:100%; padding:10px; border-radius:6px; border:1px solid #FF6EC7; background:#1a1a1a; color:#fff; }
+button { width:100%; padding:12px; border:none; border-radius:6px; font-size:16px; font-weight:bold; cursor:pointer; margin-top:10px; transition:0.2s; }
+#submit-btn { background:#FF6EC7; color:#0b0b0b; }
+#submit-btn:hover { box-shadow:0 0 10px #FF6EC7; }
+#back-btn { background:transparent; border:2px solid #FF6EC7; color:#FF6EC7; }
+#back-btn:hover { background:#FF6EC7; color:#0b0b0b; }
+</style>
+</head>
+<body>
+<div id="iv-form-container">
+  <div id="language-switcher">
+    <select id="lang-select">
+      <option value="en">English</option>
+      <option value="pl">Polski</option>
+      <option value="ru">Русский</option>
+      <option value="ua">Українська</option>
+    </select>
+  </div>
+  <form id="iv-form">
+    <div class="form-group">
+      <label id="label-firstname">First Name</label>
+      <input type="text" id="firstname" required>
+    </div>
+    <div class="form-group">
+      <label id="label-lastname">Last Name</label>
+      <input type="text" id="lastname" required>
+    </div>
+    <div class="form-group">
+      <label id="label-contact">Contact (Phone, Email, Telegram)</label>
+      <input type="text" id="contact" required>
+    </div>
+    <button type="submit" id="submit-btn">Submit</button>
+    <button type="button" id="back-btn">Back to site</button>
+  </form>
+</div>
+
+<script>
+const translations = {
+  en: { firstname:"First Name", lastname:"Last Name", contact:"Contact (Phone, Email, Telegram)", submit:"Submit", back:"Back to site" },
+  pl: { firstname:"Imię", lastname:"Nazwisko", contact:"Kontakt (Telefon, Email, Telegram)", submit:"Wyślij", back:"Powrót na stronę" },
+  ru: { firstname:"Имя", lastname:"Фамилия", contact:"Контакт (Телефон, Email, Telegram)", submit:"Отправить", back:"Вернуться на сайт" },
+  ua: { firstname:"Ім'я", lastname:"Прізвище", contact:"Контакт (Телефон, Email, Telegram)", submit:"Відправити", back:"Повернутися на сайт" }
+};
+
+const langSelect=document.getElementById("lang-select");
+langSelect.addEventListener("change",()=>{
+  const lang=langSelect.value;
+  document.getElementById("label-firstname").innerText=translations[lang].firstname;
+  document.getElementById("label-lastname").innerText=translations[lang].lastname;
+  document.getElementById("label-contact").innerText=translations[lang].contact;
+  document.getElementById("submit-btn").innerText=translations[lang].submit;
+  document.getElementById("back-btn").innerText=translations[lang].back;
+});
+
+document.getElementById("iv-form").addEventListener("submit",function(e){
+  e.preventDefault();
+  const fname=document.getElementById("firstname").value.trim();
+  const lname=document.getElementById("lastname").value.trim();
+  const contact=document.getElementById("contact").value.trim();
+  if(!fname || !lname || !contact){ alert("Please fill all required fields!"); return; }
+  alert("Form submitted!");
+  this.reset();
+});
+
+document.getElementById("back-btn").addEventListener("click",function(){ window.location.href="https://iv-store-one.vercel.app"; });
+</script>
+</body>
+</html>
