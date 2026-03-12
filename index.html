@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--primary:330 100% 60%;
+--bg:0 0% 5%;
+--card:0 0% 8%;
+--text:0 0% 95%;
+}
+
+*{
+box-sizing:border-box;
+margin:0;
+padding:0;
+}
+
+body{
+font-family:'Inter',sans-serif;
+background:hsl(var(--bg));
+color:hsl(var(--text));
+min-height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+overflow:hidden;
+}
+
+/* фоновое неоновое свечение */
+
+body::before{
+content:"";
+position:absolute;
+width:800px;
+height:800px;
+background:radial-gradient(circle,hsl(var(--primary)/0.35),transparent 60%);
+filter:blur(120px);
+top:-200px;
+left:-200px;
+}
+
+body::after{
+content:"";
+position:absolute;
+width:800px;
+height:800px;
+background:radial-gradient(circle,hsl(var(--primary)/0.25),transparent 60%);
+filter:blur(140px);
+bottom:-200px;
+right:-200px;
+}
+
+/* контейнер */
+
+.form-wrapper{
+position:relative;
+width:100%;
+max-width:620px;
+padding:60px;
+border-radius:28px;
+
+background:rgba(20,20,20,0.6);
+backdrop-filter:blur(30px);
+
+border:1px solid rgba(255,255,255,0.06);
+
+box-shadow:
+0 0 60px hsl(var(--primary)/0.15),
+0 20px 80px rgba(0,0,0,0.6);
+
+}
+
+/* заголовок */
+
+.title{
+font-size:34px;
+font-weight:800;
+text-align:center;
+margin-bottom:40px;
+
+text-shadow:
+0 0 10px hsl(var(--primary)/0.5),
+0 0 40px hsl(var(--primary)/0.25);
+}
+
+/* язык */
+
+.lang{
+width:100%;
+margin-bottom:22px;
+
+padding:16px 18px;
+border-radius:16px;
+
+background:#111;
+border:1px solid rgba(255,255,255,0.08);
+
+color:white;
+font-size:15px;
+}
+
+/* поля */
+
+.input{
+width:100%;
+padding:18px 20px;
+margin-bottom:20px;
+
+border-radius:18px;
+border:1px solid rgba(255,255,255,0.08);
+
+background:#111;
+
+color:white;
+font-size:16px;
+
+transition:all .25s ease;
+}
+
+.input::placeholder{
+color:#777;
+}
+
+.input:focus{
+outline:none;
+
+border-color:hsl(var(--primary));
+
+box-shadow:
+0 0 0 2px hsl(var(--primary)/0.2),
+0 0 30px hsl(var(--primary)/0.35);
+}
+
+/* кнопка */
+
+.back-btn{
+
+margin-top:10px;
+
+width:100%;
+padding:18px;
+
+border-radius:18px;
+
+border:none;
+
+font-weight:700;
+font-size:16px;
+
+color:white;
+
+background:linear-gradient(
+135deg,
+hsl(var(--primary)),
+hsl(330 100% 70%)
+);
+
+cursor:pointer;
+
+box-shadow:
+0 0 25px hsl(var(--primary)/0.45),
+0 10px 40px rgba(0,0,0,0.5);
+
+transition:all .25s ease;
+}
+
+.back-btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:
+0 0 40px hsl(var(--primary)/0.7),
+0 20px 60px rgba(0,0,0,0.6);
+
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="form-wrapper">
+
+<div class="title" id="title">
+Свяжитесь с нами
+</div>
+
+<select class="lang" id="lang">
+<option value="ru">Русский</option>
+<option value="pl">Polski</option>
+<option value="en">English</option>
+<option value="ua">Українська</option>
+</select>
+
+<input class="input" id="name" placeholder="Имя">
+
+<input class="input" id="surname" placeholder="Фамилия">
+
+<input class="input" id="contact" placeholder="Телефон / Email / Telegram">
+
+<button class="back-btn" id="back">
+Вернуться на сайт
+</button>
+
+</div>
+
+<script>
+
+const text = {
+
+ru:{
+title:"Свяжитесь с нами",
+name:"Имя",
+surname:"Фамилия",
+contact:"Телефон / Email / Telegram",
+back:"Вернуться на сайт"
+},
+
+pl:{
+title:"Skontaktuj się z nami",
+name:"Imię",
+surname:"Nazwisko",
+contact:"Telefon / Email / Telegram",
+back:"Powrót na stronę"
+},
+
+en:{
+title:"Contact us",
+name:"First name",
+surname:"Last name",
+contact:"Phone / Email / Telegram",
+back:"Back to site"
+},
+
+ua:{
+title:"Зв'яжіться з нами",
+name:"Ім'я",
+surname:"Прізвище",
+contact:"Телефон / Email / Telegram",
+back:"Повернутися на сайт"
+}
+
+}
+
+const lang=document.getElementById("lang")
+
+lang.addEventListener("change",()=>{
+
+const l=text[lang.value]
+
+document.getElementById("title").innerText=l.title
+document.getElementById("name").placeholder=l.name
+document.getElementById("surname").placeholder=l.surname
+document.getElementById("contact").placeholder=l.contact
+document.getElementById("back").innerText=l.back
+
+})
+
+document.getElementById("back").onclick=()=>{
+window.location.href="https://iv-store-one.vercel.app"
+}
+
+</script>
+
+</body>
+</html>
